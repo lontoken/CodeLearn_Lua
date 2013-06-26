@@ -21,6 +21,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	const char *buf = "print('Hello World')";
 	luaL_dostring(L,buf);
 	
+    double const *v = lua_version(L);
+    printf("%f", *v);
+
 	lua_close(L);
 
     int i;

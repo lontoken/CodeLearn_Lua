@@ -932,8 +932,6 @@ static void *l_alloc (void *ud, void *ptr, size_t osize, size_t nsize) {
        size += nsize;
   }
 
-  printf("osize:%d, nsize:%d, count:%d, size:%d   \n", osize, nsize, count, size);
-
   if (nsize == 0) {
     free(ptr);
     return NULL;

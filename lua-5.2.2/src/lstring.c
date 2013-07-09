@@ -6,6 +6,7 @@
 
 
 #include <string.h>
+#include <stdio.h>
 
 #define lstring_c
 #define LUA_CORE
@@ -131,21 +132,28 @@ static TString *newshrstr (lua_State *L, const char *str, size_t l,
 ** checks whether short string exists and reuses it or creates a new one
 */
 static TString *internshrstr (lua_State *L, const char *str, size_t l) {
+  int icount = 0;
   GCObject *o;
   global_State *g = G(L);
   unsigned int h = luaS_hash(str, l, g->seed);
   for (o = g->strt.hash[lmod(h, g->strt.size)];
        o != NULL;
        o = gch(o)->next) {
+    
     TString *ts = rawgco2ts(o);
+
+    ++icount;
     if (h == ts->tsv.hash &&
         l == ts->tsv.len &&
         (memcmp(str, getstr(ts), l * sizeof(char)) == 0)) {
       if (isdead(G(L), o))  /* string is dead (but was not collected yet)? */
         changewhite(o);  /* resurrect it */
+
+      printf("icount.1=%d\n", icount);
       return ts;
     }
   }
+  printf("icount.2=%d\n", icount);
   return newshrstr(L, str, l, h);  /* not found; create a new string */
 }
 

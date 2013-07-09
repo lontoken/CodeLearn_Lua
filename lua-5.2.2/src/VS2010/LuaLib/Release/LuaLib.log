@@ -1,20 +1,10 @@
-﻿生成启动时间为 2013/6/25 22:43:26。
+﻿生成启动时间为 2013/6/27 1:39:38。
      1>项目“E:\OpenSource\CodeLearn_Lua\lua-5.2.2\src\VS2010\LuaLib\LuaLib.vcxproj”在节点 2 上(build 个目标)。
      1>InitializeBuildStatus:
          正在创建“Release\LuaLib.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
        ClCompile:
-         E:\ProgramFiles\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt ..\..\lauxlib.c
-         lauxlib.c
-     1>..\..\lauxlib.c(216): warning C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 E:\ProgramFiles\Microsoft Visual Studio 10.0\VC\include\string.h(157) : 参见“strerror”的声明
-     1>..\..\lauxlib.c(218): warning C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 E:\ProgramFiles\Microsoft Visual Studio 10.0\VC\include\string.h(157) : 参见“strerror”的声明
-     1>..\..\lauxlib.c(588): warning C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 E:\ProgramFiles\Microsoft Visual Studio 10.0\VC\include\string.h(157) : 参见“strerror”的声明
-     1>..\..\lauxlib.c(642): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 E:\ProgramFiles\Microsoft Visual Studio 10.0\VC\include\stdio.h(234) : 参见“fopen”的声明
-     1>..\..\lauxlib.c(648): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 E:\ProgramFiles\Microsoft Visual Studio 10.0\VC\include\stdio.h(249) : 参见“freopen”的声明
+         E:\ProgramFiles\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt ..\..\lstring.c
+         lstring.c
        Lib:
          E:\ProgramFiles\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"E:\OpenSource\CodeLearn_Lua\lua-5.2.2\src\VS2010\LuaLib\Release\LuaLib.lib" /NOLOGO /LTCG Release\lapi.obj
          Release\lauxlib.obj
@@ -59,4 +49,4 @@
 
 生成成功。
 
-已用时间 00:00:00.29
+已用时间 00:00:00.57

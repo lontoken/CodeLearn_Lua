@@ -22,7 +22,7 @@
 
 /*
 ** maximum number of captures that a pattern can do during
-** pattern-matching. This limit is arbitrary.
+** pattern-matching. This limit is arbitraryŒ‰∂œ.
 */
 #if !defined(LUA_MAXCAPTURES)
 #define LUA_MAXCAPTURES		32

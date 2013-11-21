@@ -70,6 +70,9 @@ static int doargs(int argc, char* argv[])
 {
  int i;
  int version=0;
+
+ printf("%d", argc);
+
  if (argv[0]!=NULL && *argv[0]!=0) progname=argv[0];
  for (i=1; i<argc; i++)
  {
@@ -101,6 +104,9 @@ static int doargs(int argc, char* argv[])
   else					/* unknown option */
    usage(argv[i]);
  }
+
+ printf("%d", argc);
+
  if (i==argc && (listing || !dumping))
  {
   dumping=0;

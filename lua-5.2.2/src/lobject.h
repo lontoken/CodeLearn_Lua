@@ -417,7 +417,7 @@ typedef union TString {
   } tsv;
 } TString;
 
-
+//字符串的内容没有放在TString中，而是放在它的后面
 /* get the actual string (array of bytes) from a TString */
 #define getstr(ts)	cast(const char *, (ts) + 1)
 

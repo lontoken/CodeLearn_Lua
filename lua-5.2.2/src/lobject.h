@@ -97,8 +97,8 @@ typedef union Value Value;
 
 
 /*
-** Tagged Values. This is the basic representation of values in Lua,
-** an actual value plus a tag with its type.
+** Tagged标记 Values. This is the basic representation of values in Lua,
+** an actual真实的 value plus a tag with its type.
 */
 
 #define TValuefields	Value value_; int tt_

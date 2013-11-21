@@ -183,9 +183,6 @@
     <ClCompile Include="..\..\ltm.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\lua.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\lundump.c">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -193,9 +190,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lzio.c">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\luac.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

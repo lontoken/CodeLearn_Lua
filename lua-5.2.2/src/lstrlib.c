@@ -21,7 +21,7 @@
 
 
 /*
-** maximum number of captures that a pattern can do during
+** maximum number of captures捕获 that a pattern can do during
 ** pattern-matching. This limit is arbitrary武断.
 */
 #if !defined(LUA_MAXCAPTURES)
@@ -42,7 +42,7 @@ static int str_len (lua_State *L) {
 }
 
 
-/* translate a relative string position: negative means back from end */
+/* translate a relative相对的 string position: negative means back from end */
 static size_t posrelat (ptrdiff_t pos, size_t len) {
   if (pos >= 0) return (size_t)pos;
   else if (0u - (size_t)pos > len) return 0;

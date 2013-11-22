@@ -111,11 +111,11 @@ typedef struct CallInfo {
 */
 typedef struct global_State {
   lua_Alloc frealloc;  /* function to reallocate memory */
-  void *ud;         /* auxiliary data to `frealloc' */
+  void *ud;         /* auxiliary¸¨Öú data to `frealloc' */
   lu_mem totalbytes;  /* number of bytes currently allocated - GCdebt */
-  l_mem GCdebt;  /* bytes allocated not yet compensated by the collector */
+  l_mem GCdebt;  /* bytes allocated not yet compensated²¹³¥ by the collector */
   lu_mem GCmemtrav;  /* memory traversed by the GC */
-  lu_mem GCestimate;  /* an estimate of the non-garbage memory in use */
+  lu_mem GCestimate;  /* an estimateÆÀ¹À of the non-garbage memory in use */
   stringtable strt;  /* hash table for strings */
   TValue l_registry;
   unsigned int seed;  /* randomized seed for hashes */
@@ -126,7 +126,7 @@ typedef struct global_State {
   int sweepstrgc;  /* position of sweep in `strt' */
   GCObject *allgc;  /* list of all collectable objects */
   GCObject *finobj;  /* list of collectable objects with finalizers */
-  GCObject **sweepgc;  /* current position of sweep in list 'allgc' */
+  GCObject **sweepgc;  /* current position of sweep´òÉ¨ in list 'allgc' */
   GCObject **sweepfin;  /* current position of sweep in list 'finobj' */
   GCObject *gray;  /* list of gray objects */
   GCObject *grayagain;  /* list of objects to be traversed atomically */
@@ -161,8 +161,8 @@ struct lua_State {
   StkId stack_last;  /* last free slot in the stack */
   StkId stack;  /* stack base */
   int stacksize;
-  unsigned short nny;  /* number of non-yieldable calls in stack */
-  unsigned short nCcalls;  /* number of nested C calls */
+  unsigned short nny;  /* number of non-yieldable²»¿ÉÉìËõ calls in stack */
+  unsigned short nCcalls;  /* number of nestedÇ¶Ì×µÄ C calls */
   lu_byte hookmask;
   lu_byte allowhook;
   int basehookcount;
@@ -170,7 +170,7 @@ struct lua_State {
   lua_Hook hook;
   GCObject *openupval;  /* list of open upvalues in this stack */
   GCObject *gclist;
-  struct lua_longjmp *errorJmp;  /* current error recover point */
+  struct lua_longjmp *errorJmp;  /* current error recover»Ö¸´ point */
   ptrdiff_t errfunc;  /* current error handling function (stack index) */
   CallInfo base_ci;  /* CallInfo for first level (C calling Lua) */
 };

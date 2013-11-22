@@ -71,7 +71,7 @@ typedef union GCObject GCObject;
 
 
 /*
-** Common Header for all collectable objects (in macro form, to be
+** Common Header for all collectable可回收的 objects (in macro form, to be
 ** included in other objects)
 */
 #define CommonHeader	GCObject *next; lu_byte tt; lu_byte marked
@@ -97,8 +97,8 @@ typedef union Value Value;
 
 
 /*
-** Tagged Values. This is the basic representation of values in Lua,
-** an actual value plus a tag with its type.
+** Tagged标记 Values. This is the basic representation of values in Lua,
+** an actual真实的 value plus a tag with its type.
 */
 
 #define TValuefields	Value value_; int tt_

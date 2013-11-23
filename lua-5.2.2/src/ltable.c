@@ -279,7 +279,7 @@ static void setarrayvector (lua_State *L, Table *t, int size) {
 static void setnodevector (lua_State *L, Table *t, int size) {
   int lsize;
   if (size == 0) {  /* no elements to hash part? */
-    t->node = cast(Node *, dummynode);  /* use common `dummynode' */
+    t->node = cast(Node *, dummynode);  /* use common `dummynode虚拟节点' */
     lsize = 0;
   }
   else {
@@ -310,9 +310,9 @@ void luaH_resize (lua_State *L, Table *t, int nasize, int nhsize) {
     setarrayvector(L, t, nasize);
   /* create new hash part with appropriate size */
   setnodevector(L, t, nhsize);
-  if (nasize < oldasize) {  /* array part must shrink? */
+  if (nasize < oldasize) {  /* array part must shrink收缩? */
     t->sizearray = nasize;
-    /* re-insert elements from vanishing slice */
+    /* re-insert elements from vanishing消失的 slice片段 */
     for (i=nasize; i<oldasize; i++) {
       if (!ttisnil(&t->array[i]))
         luaH_setint(L, t, i + 1, &t->array[i]);

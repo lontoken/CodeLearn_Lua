@@ -162,6 +162,7 @@ static void freestack (lua_State *L) {
 /*
 ** Create registry table and its predefined values
 */
+//初始化注册表
 static void init_registry (lua_State *L, global_State *g) {
   TValue mt;
   /* create registry */
@@ -180,6 +181,12 @@ static void init_registry (lua_State *L, global_State *g) {
 /*
 ** open parts of the state that may cause memory-allocation errors
 */
+//执行一些和需要做内存分配的初始化工作：
+//  初始化堆栈
+//  初始化注册表
+//  初始化字符串池
+//  初始化基本内置方法的关键字列表
+//  初始化保留字列表
 static void f_luaopen (lua_State *L, void *ud) {
   global_State *g = G(L);
   UNUSED(ud);
@@ -199,6 +206,7 @@ static void f_luaopen (lua_State *L, void *ud) {
 ** preinitialize a state with consistent values without allocating
 ** any memory (to avoid errors)
 */
+//执行一些不需要分配内存的初始化工作
 static void preinit_state (lua_State *L, global_State *g) {
   G(L) = g;
   L->stack = NULL;
@@ -259,12 +267,17 @@ void luaE_freethread (lua_State *L, lua_State *L1) {
 }
 
 
+//创建新的lua_State和global_State，并做相应的初始化，设置global_State的mainthread、frealloc、seek;
+//并在保护模式中执行f_luaopen函数，以新建的lua_State和ud为参数；
 LUA_API lua_State *lua_newstate (lua_Alloc f, void *ud) {
   int i;
   lua_State *L;
   global_State *g;
+
+  //为lua_State和global_State分配内存
   LG *l = cast(LG *, (*f)(ud, NULL, LUA_TTHREAD, sizeof(LG)));
   if (l == NULL) return NULL;
+
   L = &l->l.l;
   g = &l->g;
   L->next = NULL;
@@ -301,6 +314,8 @@ LUA_API lua_State *lua_newstate (lua_Alloc f, void *ud) {
   g->gcmajorinc = LUAI_GCMAJOR;
   g->gcstepmul = LUAI_GCMUL;
   for (i=0; i < LUA_NUMTAGS; i++) g->mt[i] = NULL;
+
+  //执行需要分配内存的初始化
   if (luaD_rawrunprotected(L, f_luaopen, NULL) != LUA_OK) {
     /* memory allocation error: free partial state */
     close_state(L);

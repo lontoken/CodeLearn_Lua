@@ -30,7 +30,7 @@ enum RESERVED {
   TK_NUMBER, TK_NAME, TK_STRING
 };
 
-/* number of reserved words */
+/* number of reserved±£¡Ù words */
 #define NUM_RESERVED	(cast(int, TK_WHILE-FIRST_RESERVED+1))
 
 

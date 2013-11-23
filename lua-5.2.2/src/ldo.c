@@ -122,6 +122,8 @@ l_noret luaD_throw (lua_State *L, int errcode) {
 }
 
 
+//在保护模式(try)中执行f所指向的函数，并用L和ud作为参数；
+//在调用前后L的errorJmp和nCcalls保持不变；
 int luaD_rawrunprotected (lua_State *L, Pfunc f, void *ud) {
   unsigned short oldnCcalls = L->nCcalls;
   struct lua_longjmp lj;

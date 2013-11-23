@@ -477,6 +477,8 @@ static int pmain (lua_State *L) {
 }
 
 
+//执行luaL_newstate初始化主lua_State和global_State
+//
 int main (int argc, char **argv) {
   int status, result;
   lua_State *L = luaL_newstate();  /* create state */

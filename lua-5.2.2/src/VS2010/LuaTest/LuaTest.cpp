@@ -16,17 +16,22 @@ extern "C"
 int _tmain(int argc, _TCHAR* argv[])
 {
 	lua_State *L = luaL_newstate();
-	luaL_openlibs(L);
+	//luaL_openlibs(L);
 
-    const char *buf = "local len = 10000; local tab = {};"
-        "for i = 1, len do"
-        "   tab[i] = 'str' .. i;"
-        "   print(tab[i]);"
-        "end";
-	luaL_dostring(L,buf);
-	
-    double const *v = lua_version(L);
-    printf("%f\n", *v);
+ //   const char *buf = "local len = 10000; local tab = {};"
+ //       "for i = 1, len do"
+ //       "   tab[i] = 'str' .. i;"
+ //       "   print(tab[i]);"
+ //       "end";
+	//luaL_dostring(L,buf);
+	//
+ //   double const *v = lua_version(L);
+ //   printf("%f\n", *v);           ''
+    lua_pushnumber(L, 1);
+    lua_newtable(L);
+
+    int val = (int)luaL_checknumber(L, 1);    
+    std::cout << val << std::endl;
 
 	lua_close(L);
 

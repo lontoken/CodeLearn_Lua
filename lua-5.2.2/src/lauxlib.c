@@ -878,10 +878,12 @@ LUALIB_API int luaL_getsubtable (lua_State *L, int idx, const char *fname) {
 
 
 /*
-** stripped-down 'require'. Calls 'openf' to open a module,
+** stripped-down无装饰的 'require'. Calls 'openf' to open a module,
 ** registers the result in 'package.loaded' table and, if 'glb'
 ** is true, also registers the result in the global table.
 ** Leaves resulting module on the top.
+** 没有装饰的"require",调用openf来打开模块,并且注册到package.loaded数组中,
+** 如果glb为真,同时注册到全局数组中.
 */
 LUALIB_API void luaL_requiref (lua_State *L, const char *modname,
                                lua_CFunction openf, int glb) {

@@ -163,6 +163,9 @@ static void freestack (lua_State *L) {
 ** Create registry table and its predefined values
 */
 //初始化注册表
+//初始化完成之后:
+//  registry[LUA_RIDX_MAINTHREAD] = L    (LUA_RIDX_MAINTHREAD = 1)
+//  registry[LUA_RIDX_GLOBALS] = table of globals       (LUA_RIDX_GLOBALS=2)
 static void init_registry (lua_State *L, global_State *g) {
   TValue mt;
   /* create registry */

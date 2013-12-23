@@ -52,6 +52,11 @@ const char lua_ident[] =
 	api_check(L, isstackindex(i, o), "index not in the stack")
 
 
+//获取idx处的TValue*:
+// idx > 0,返回函数栈;
+// idx <= 0 && idx > LUA_REGISTRYINDEX, 返回数据栈;
+// idx == LUA_REGISTRYINDEX,返回全局注册表;
+// idx < LUA_REGISTRYINDEX,返回upvalues;
 static TValue *index2addr (lua_State *L, int idx) {
   CallInfo *ci = L->ci;
   if (idx > 0) {
@@ -645,7 +650,7 @@ LUA_API void lua_rawget (lua_State *L, int idx) {
   lua_unlock(L);
 }
 
-
+//把 t[n] 的值压栈， 这里的 t 是指给定索引 index 处的一个值。
 LUA_API void lua_rawgeti (lua_State *L, int idx, int n) {
   StkId t;
   lua_lock(L);

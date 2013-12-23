@@ -49,6 +49,7 @@ static const luaL_Reg preloadedlibs[] = {
 };
 
 
+//打开lua标准库的模块,到指定的lua_State
 LUALIB_API void luaL_openlibs (lua_State *L) {
   const luaL_Reg *lib;
   /* call open functions from 'loadedlibs' and set results to global table */

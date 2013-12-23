@@ -891,6 +891,12 @@ LUA_API int lua_getctx (lua_State *L, int *ctx) {
 }
 
 
+//要调用一个函数请遵循以下协议： 首先，要调用的函数应该被压入堆栈； 接着，把需要传递给这个函数的参
+//数按正序压栈； 这是指第一个参数首先压栈。最后调用一下 lua_call； nargs 是你压入堆栈的参数个数。 当
+//函数调用完毕后，所有的参数以及函数本身都会出栈。 而函数的返回值这时则被压入堆栈。 返回值的个数将被调
+//整为 nresults 个， 除非 nresults 被设置成 LUA_MULTRET。在这种情况下，所有的返回值都被压入堆栈中。
+//Lua 会保证返回值都放入栈空间中。 函数返回值将按正序压栈（第一个返回值首先压栈），因此在调用结束后，最
+//后一个返回值将被放在栈顶。
 LUA_API void lua_callk (lua_State *L, int nargs, int nresults, int ctx,
                         lua_CFunction k) {
   StkId func;

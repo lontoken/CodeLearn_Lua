@@ -446,10 +446,12 @@ static const luaL_Reg base_funcs[] = {
 
 LUAMOD_API int luaopen_base (lua_State *L) {
   /* set global _G */
+  //将全局注册表压入堆栈
   lua_pushglobaltable(L);
   lua_pushglobaltable(L);
-  lua_setfield(L, -2, "_G");
+  lua_setfield(L, -2, "_G");       //将全局注册表的"_G"指向全局注册表自身
   /* open lib into global table */
+  //将base_funcs中的函数注册到全局注册表中
   luaL_setfuncs(L, base_funcs, 0);
   lua_pushliteral(L, LUA_VERSION);
   lua_setfield(L, -2, "_VERSION");  /* set global _VERSION */

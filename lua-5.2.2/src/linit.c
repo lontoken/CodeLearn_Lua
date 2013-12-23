@@ -54,7 +54,7 @@ LUALIB_API void luaL_openlibs (lua_State *L) {
   const luaL_Reg *lib;
   /* call open functions from 'loadedlibs' and set results to global table */
   for (lib = loadedlibs; lib->func; lib++) {
-    luaL_requiref(L, lib->name, lib->func, 1);
+    luaL_requiref(L, lib->name, lib->func, 1);     //0x00603ac0
     lua_pop(L, 1);  /* remove lib */
   }
   /* add open functions from 'preloadedlibs' into 'package.preload' table */

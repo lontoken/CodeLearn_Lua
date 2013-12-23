@@ -845,6 +845,8 @@ LUALIB_API void luaL_openlib (lua_State *L, const char *libname,
 ** function gets the 'nup' elements at the top as upvalues.
 ** Returns with only the table at the stack.
 */
+//将l构成的函数列表设置到top-nup指定的数组,将栈顶的nup个元素设置为每个函数的upvalues.
+//返回时栈顶下的第一个元素为top-nup指定的数组
 LUALIB_API void luaL_setfuncs (lua_State *L, const luaL_Reg *l, int nup) {
   luaL_checkversion(L);
   luaL_checkstack(L, nup, "too many upvalues");
@@ -887,14 +889,15 @@ LUALIB_API int luaL_getsubtable (lua_State *L, int idx, const char *fname) {
 */
 LUALIB_API void luaL_requiref (lua_State *L, const char *modname,
                                lua_CFunction openf, int glb) {
-  lua_pushcfunction(L, openf);
+  lua_pushcfunction(L, openf);      //0x00603ac0
   lua_pushstring(L, modname);  /* argument to open function */
-  lua_call(L, 1, 1);  /* open module */
+  lua_call(L, 1, 1);  /* open module */  //0x00603ad0
+  //此时openf和modname已经出栈,生成的新table在原来openf处
   luaL_getsubtable(L, LUA_REGISTRYINDEX, "_LOADED");
   lua_pushvalue(L, -2);  /* make copy of module (call result) */
   lua_setfield(L, -2, modname);  /* _LOADED[modname] = module */
   lua_pop(L, 1);  /* remove _LOADED table */
-  if (glb) {
+  if (glb) {           //0x00603ac8
     lua_pushvalue(L, -1);  /* copy of 'mod' */
     lua_setglobal(L, modname);  /* _G[modname] = module */
   }

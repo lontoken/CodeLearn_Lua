@@ -354,6 +354,8 @@ int luaD_precall (lua_State *L, StkId func, int nresults) {
 }
 
 
+//函数调用完成之后,将返回值放置在栈中正确的位置,第一个返回值放在之前被调用的函数的位置,依此类推,
+//最后将栈顶置为最后一个返回值的后面
 int luaD_poscall (lua_State *L, StkId firstResult) {
   StkId res;
   int wanted, i;

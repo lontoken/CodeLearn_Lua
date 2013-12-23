@@ -100,6 +100,7 @@ typedef union Value Value;
 ** Tagged标记 Values. This is the basic representation of values in Lua,
 ** an actual真实的 value plus a tag with its type.
 */
+//在定义了LUA_NANTRICK后，TValuefields、TValue和相关的操作宏会被重新定义
 
 #define TValuefields	Value value_; int tt_
 
@@ -184,6 +185,7 @@ typedef struct lua_TValue TValue;
 /* Macros to set values */
 #define settt_(o,t)	((o)->tt_=(t))
 
+//设置TValue的相关值，这里对应的宏为没有定义LUA_NANTRICK时的
 #define setnvalue(obj,x) \
   { TValue *io=(obj); num_(io)=(x); settt_(io, LUA_TNUMBER); }
 
@@ -323,7 +325,7 @@ typedef struct lua_TValue TValue;
 #endif			/* } */
 
 
-/* correspondence with standard representation */
+/* correspondence with standard representation符合标准表达式 */
 #undef val_
 #define val_(o)		v_(o)
 #undef num_

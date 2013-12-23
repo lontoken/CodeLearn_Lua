@@ -385,6 +385,7 @@ int luaD_poscall (lua_State *L, StkId firstResult) {
 ** When returns, all the results are on the stack, starting at the original
 ** function position.
 */
+//调用C或LUA的函数，待调用的函数在func处，参数在栈中，函数的右边。返回值也存放在栈中，从函数原来的位置开始放置。
 void luaD_call (lua_State *L, StkId func, int nResults, int allowyield) {
   if (++L->nCcalls >= LUAI_MAXCCALLS) {
     if (L->nCcalls == LUAI_MAXCCALLS)

@@ -190,6 +190,50 @@ luaL_checknumber的定义如下:
         return d;  
     }  
 
+示例代码如下(lua库的luaopen_base函数,用于注册):  
+    
+    #define lua_pushglobaltable(L)  \
+        lua_rawgeti(L, LUA_REGISTRYINDEX, LUA_RIDX_GLOBALS)
+
+    LUALIB_API void luaL_setfuncs (lua_State *L, const luaL_Reg *l, int nup) {
+        luaL_checkversion(L);
+        luaL_checkstack(L, nup, "too many upvalues");
+        for (; l->name != NULL; l++) {  /* fill the table with given functions */
+            int i;
+            for (i = 0; i < nup; i++)  /* copy upvalues to the top */
+                lua_pushvalue(L, -nup);
+            lua_pushcclosure(L, l->func, nup);  /* closure with those upvalues */
+            lua_setfield(L, -(nup + 2), l->name);
+        }
+        lua_pop(L, nup);  /* remove upvalues */
+    }
+
+    LUAMOD_API int luaopen_base (lua_State *L) {  
+        /* set global _G */  
+        lua_pushglobaltable(L);  
+        lua_pushglobaltable(L);  
+        lua_setfield(L, -2, "_G");       
+        /* open lib into global table */  
+        luaL_setfuncs(L, base_funcs, 0);  
+        lua_pushliteral(L, LUA_VERSION);  
+        lua_setfield(L, -2, "_VERSION");  /* set global _VERSION */  
+        return 1;  
+    }  
+    
+luaopen_base函数设置全局注册表的"_G"字段,base_funcs指定的函数列表,"_VERSION"字段.  
+第一个lua_pushglobaltable(L)之后:  
+
+第二个lua_pushglobaltable(L)之后:  
+
+lua_setfield(L, -2, "_G")之后:  
+
+luaL_setfuncs(L, base_funcs, 0)之后:  
+
+lua_pushliteral(L, LUA_VERSION)之后:  
+
+lua_setfield(L, -2, "_VERSION")
+
+
 
 ##参考资源
 *   lua源码分析<http://www.codingnow.com/temp/readinglua.pdf>

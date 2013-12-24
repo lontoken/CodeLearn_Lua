@@ -19,6 +19,7 @@
 
 #define incr_top(L) {L->top++; luaD_checkstack(L,0);}
 
+//保存p与L->stack指定的栈底的距离
 #define savestack(L,p)		((char *)(p) - (char *)L->stack)
 #define restorestack(L,n)	((TValue *)((char *)L->stack + (n)))
 

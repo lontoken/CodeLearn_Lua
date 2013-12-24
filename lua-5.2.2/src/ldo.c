@@ -589,6 +589,8 @@ LUA_API int lua_yieldk (lua_State *L, int nresults, int ctx, lua_CFunction k) {
 }
 
 
+//使用u做为参数,调用func
+//old_top保存调用此函数之前,top相对栈底的位置
 int luaD_pcall (lua_State *L, Pfunc func, void *u,
                 ptrdiff_t old_top, ptrdiff_t ef) {
   int status;

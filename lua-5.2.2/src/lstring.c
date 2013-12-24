@@ -149,11 +149,9 @@ static TString *internshrstr (lua_State *L, const char *str, size_t l) {
       if (isdead(G(L), o))  /* string is dead (but was not collected yet)? */
         changewhite(o);  /* resurrect it */
 
-      printf("icount.1=%d\n", icount);
       return ts;
     }
   }
-  printf("icount.2=%d\n", icount);
   return newshrstr(L, str, l, h);  /* not found; create a new string */
 }
 

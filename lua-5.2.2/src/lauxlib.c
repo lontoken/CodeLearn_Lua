@@ -899,6 +899,7 @@ LUALIB_API void luaL_requiref (lua_State *L, const char *modname,
   lua_pop(L, 1);  /* remove _LOADED table */
   if (glb) {           //0x00603ac8
     lua_pushvalue(L, -1);  /* copy of 'mod' */
+    //对于多次调用luaL_requiref,全局注册表相应的键值会被最新的覆盖
     lua_setglobal(L, modname);  /* _G[modname] = module */
   }
 }

@@ -16,6 +16,10 @@ extern "C"
 int _tmain(int argc, _TCHAR* argv[])
 {
 	lua_State *L = luaL_newstate();
+    luaL_openlibs(L);
+
+    int res =  luaL_dostring(L, "print('test'); return 3;");
+    int iRes = lua_tointeger(L, -1);
 	//luaL_openlibs(L);
 
  //   const char *buf = "local len = 10000; local tab = {};"
@@ -27,16 +31,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	//
  //   double const *v = lua_version(L);
  //   printf("%f\n", *v);           ''
-    lua_pushnumber(L, 1);
-    lua_newtable(L);
-
-    int val = (int)luaL_checknumber(L, 1);    
-    std::cout << val << std::endl;
-
+    std::cout << "res=" << res << ",iRes=" << iRes << std::endl;
 	lua_close(L);
-
     int i;
-
     std::cin >> i;
 
 	return 0;

@@ -981,6 +981,12 @@ LUA_API int lua_pcallk (lua_State *L, int nargs, int nresults, int errfunc,
 }
 
 
+//加载一个 Lua chunk 。 如果没有错误， lua_load 把一个编译好的 chunk 作为一个 Lua 函数压入堆栈。 否则，
+//压入出错信息。 lua_load 的返回值可以是：
+// 0: 没有错误；
+// LUA_ERRSYNTAX: 在预编译时碰到语法错误；
+// LUA_ERRMEM: 内存分配错误。
+//这个函数仅仅加栽 chunk ；而不会去运行它。
 LUA_API int lua_load (lua_State *L, lua_Reader reader, void *data,
                       const char *chunkname, const char *mode) {
   ZIO z;

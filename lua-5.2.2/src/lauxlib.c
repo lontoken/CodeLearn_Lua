@@ -273,6 +273,7 @@ LUALIB_API int luaL_newmetatable (lua_State *L, const char *tname) {
   luaL_getmetatable(L, tname);  /* try to get metatable */
   if (!lua_isnil(L, -1))  /* name already in use? */
     return 0;  /* leave previous value on top, but return 0 */
+  //将luaL_getmetatable压入栈的nil出栈
   lua_pop(L, 1);
   lua_newtable(L);  /* create metatable */
   lua_pushvalue(L, -1);

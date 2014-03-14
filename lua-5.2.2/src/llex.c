@@ -62,6 +62,7 @@ static void save (LexState *ls, int c) {
 }
 
 
+//初始化：处理保留字的标志
 void luaX_init (lua_State *L) {
   int i;
   for (i=0; i<NUM_RESERVED; i++) {
@@ -118,7 +119,7 @@ l_noret luaX_syntaxerror (LexState *ls, const char *msg) {
 
 /*
 ** creates a new string and anchors it in function's table so that
-** it will not be collected until the end of the function's compilation
+** it will not be collected until the end of the function's compilation编辑
 ** (by that time it should be anchored in function's prototype)
 */
 TString *luaX_newstring (LexState *ls, const char *str, size_t l) {

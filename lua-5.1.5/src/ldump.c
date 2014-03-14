@@ -128,6 +128,7 @@ static void DumpDebug(const Proto* f, DumpState* D)
 
 static void DumpFunction(const Proto* f, const TString* p, DumpState* D)
 {
+ //写入源文件名
  DumpString((f->source==p || D->strip) ? NULL : f->source,D);
  DumpInt(f->linedefined,D);
  DumpInt(f->lastlinedefined,D);

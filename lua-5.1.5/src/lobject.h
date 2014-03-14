@@ -259,6 +259,7 @@ typedef struct Proto {
 #define VARARG_NEEDSARG		4
 
 
+//lua的本地变量
 typedef struct LocVar {
   TString *varname;
   int startpc;  /* first point where variable is active */

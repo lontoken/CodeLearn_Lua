@@ -71,7 +71,7 @@ static int doargs(int argc, char* argv[])
  int i;
  int version=0;
 
- printf("%d", argc);
+ printf("%d\n", argc);
 
  if (argv[0]!=NULL && *argv[0]!=0) progname=argv[0];
  for (i=1; i<argc; i++)
@@ -105,7 +105,7 @@ static int doargs(int argc, char* argv[])
    usage(argv[i]);
  }
 
- printf("%d", argc);
+ printf("%d\n", argc);
 
  if (i==argc && (listing || !dumping))
  {
@@ -196,6 +196,7 @@ int main(int argc, char* argv[])
 {
  lua_State* L;
  int i=doargs(argc,argv);
+ char cc;
  argc-=i; argv+=i;
  if (argc<=0) usage("no input files given");
  L=luaL_newstate();
@@ -205,6 +206,9 @@ int main(int argc, char* argv[])
  lua_pushlightuserdata(L,argv);
  if (lua_pcall(L,2,0,0)!=LUA_OK) fatal(lua_tostring(L,-1));
  lua_close(L);
+
+ cc = getchar();
+
  return EXIT_SUCCESS;
 }
 

@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LuaBin", "..\LuaBin\LuaBin.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LuaCallC", "..\LuaCallC\LuaCallC.vcxproj", "{B3A5A60E-856F-43DE-993B-E47D3B950160}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LuaBinC", "..\LuaBinC\LuaBinC.vcxproj", "{2023588F-77C2-4810-A2C8-14228784AAD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -31,6 +33,10 @@ Global
 		{B3A5A60E-856F-43DE-993B-E47D3B950160}.Debug|Win32.Build.0 = Debug|Win32
 		{B3A5A60E-856F-43DE-993B-E47D3B950160}.Release|Win32.ActiveCfg = Release|Win32
 		{B3A5A60E-856F-43DE-993B-E47D3B950160}.Release|Win32.Build.0 = Release|Win32
+		{2023588F-77C2-4810-A2C8-14228784AAD5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2023588F-77C2-4810-A2C8-14228784AAD5}.Debug|Win32.Build.0 = Debug|Win32
+		{2023588F-77C2-4810-A2C8-14228784AAD5}.Release|Win32.ActiveCfg = Release|Win32
+		{2023588F-77C2-4810-A2C8-14228784AAD5}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

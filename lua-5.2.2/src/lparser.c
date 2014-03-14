@@ -589,6 +589,7 @@ static void close_func (LexState *ls) {
 ** check whether current token is in the follow set of a block.
 ** 'until' closes syntactical blocks, but do not close scope,
 ** so it handled in separate.
+  检查当前的token是否是一个接下来的块，其中until要特别对待，因为它结果了一个语法块，但是没有结束一个作用域块
 */
 static int block_follow (LexState *ls, int withuntil) {
   switch (ls->t.token) {
@@ -1610,6 +1611,7 @@ static void mainfunc (LexState *ls, FuncState *fs) {
   newupvalue(fs, ls->envn, &v);  /* ...set environment upvalue */
   luaX_next(ls);  /* read first token */
   statlist(ls);  /* parse main body */
+  //文件结尾的TK_EOS检查，若return语句不在最后，则会报错
   check(ls, TK_EOS);
   close_func(ls);
 }
